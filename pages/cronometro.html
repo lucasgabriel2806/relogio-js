@@ -16,6 +16,9 @@
     <link rel="stylesheet" href="./../css/sidebar.css">
     <link rel="stylesheet" href="./../css/cronometro.css">
 
+    <!-- Link JavaScript -->
+    <script src="js/cronometro.js" defer></script>
+
     <title>Relógio JS | Cronômetro</title>
 
 </head>
@@ -72,50 +75,69 @@
 
             <div class="container-cronometro">
 
-                <p class="hour">
-                    00
-                </p>
+                <div class="container-hour">
+                    <p class="time" id="hour">
+                        00
+                    </p>
+                    <p class="sub-text">
+                        h
+                    </p>
+                </div>
 
-                <p class="dois-pontos">
+                <p class="separator">
                     :
                 </p>
 
-                <p class="minute">
-                    00
-                </p>
+                <div class="container-minute">
+                    <p class="time" id="minute">
+                        00
+                    </p>
+                    <p class="sub-text">
+                        min
+                    </p>
+                </div>
 
-                <p class="dois-pontos">
+                <p class="separator">
                     :
                 </p>
 
-                <p class="second">
-                    00
-                </p>
+                <div class="container-second">
+                    <p class="time" id="second">
+                        00
+                    </p>
+                    <p class="sub-text">
+                        seg
+                    </p>
+                </div>
 
-                <p class="dois-pontos">
+                <p class="separator">
                     ,
                 </p>
 
-                <p class="millisecond">
-                    00
-                </p>
+                <div class="container-millisecond">
+                    <p class="time" id="millisecond">
+                        00
+                    </p>
+                </div>
 
             </div>
 
             <div class="container-btns">
 
-                <button class="btn-start">Iniciar</button>
+                <button class="btn" id="btn-start">Iniciar</button>
 
-                <button class="btn-marcar-tempo">Marcar tempo</button>
+                <button class="btn" id="btn-pause">Pausar</button>
 
-                <button class="btn-restart">Reiniciar</button>
+                <button class="btn" id="btn-mark">Marcar tempo</button>
+
+                <button class="btn" id="btn-restart">Reiniciar</button>
 
             </div>
 
         </div>
 
     </main>
-    
+
 </body>
 
 </html>
