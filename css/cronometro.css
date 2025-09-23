@@ -10,3 +10,15 @@
 .container-cronometro #millisecond {
     font-size: 4em;
 }
+
+.container-btns {
+    display: flex;
+}
+
+.btn {
+    padding: 10px 20px;
+}
+
+#btnPause {
+    display: none;
+}
