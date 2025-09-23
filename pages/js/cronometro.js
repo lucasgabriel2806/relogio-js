@@ -1,65 +1,50 @@
 /** Variáveis */
-let hour = document.getElementById("hour");
-let minute = document.getElementById("minute");
-let second = document.getElementById("second");
-let millisecond = document.getElementById("millisecond");
+const hoursEl = document.querySelector("#hours");
+const minutesEl = document.querySelector("#minutes");
+const secondsEl = document.querySelector("#seconds");
+const millisecondsEl = document.querySelector("#milliseconds");
+const btnStart = document.querySelector("#btnStart");
+const btnPause = document.querySelector("#btnPause");
+const btnMark = document.querySelector("#btnMark");
+const btnRestart = document.querySelector("#btnRestart");
 
-const btnStart = document.getElementById("btn-start");
-const btnPause = document.getElementById("btn-pause");
-const btnMark = document.getElementById("btn-mark");
-const btnRestart = document.getElementById("btn-restart");
+let interval;
+let minutes = 0;
+let seconds = 0;
+let milliseconds = 0;
+let isPaused = false;
 
-let start = false;
+btnStart.addEventListener("click", startTimer());
 
-/** Definindo tempo do cronômetro */
+function startTimer() {
+    interval = setInterval(() => {
 
-// Instânciando a classe Date
-let cronometro = new Date();
+        if(!isPaused) {
+            
+            milliseconds += 10;
 
-// Defininfo tempo
-cronometro.setHours(0, 0, 0);
-cronometro.setMilliseconds(0);
+            if(milliseconds === 1000) {
+                seconds++;
+                milliseconds = 0;
+            }
 
-// Atribuindo tempo
-hour.innerText = cronometro.getHours();
-minute.innerText = cronometro.getMinutes();
-second.innerText = cronometro.getSeconds();
-millisecond.innerText = cronometro.getMilliseconds();
+            if(seconds === 60) {
+                minutes++;
+                seconds = 0;
+            }
 
-console.log(`${hour}: ${minute}: ${second}: ${millisecond} \nh  m  s`);
+            minutesEl.textContent = formatTime(minutes);
+            secondsEl.textContent = formatTime(seconds);
+            millisecondsEl.textContent = formatMillisecons(milliseconds);
+        }
 
-// Botões
-btnRestart.addEventListener("click", function(e) {
+    }, 10);
+}
 
-    console.log("*** REINICIANDO CRONÔMETRO ***");
+function formatTime(time) {
+    return time < 10 ? `0${time}` : time;
+}
 
-    cronometro.setHours(0, 0, 0);
-    cronometro.setMilliseconds(0);
-
-    hour.innerText = cronometro.getHours();
-    minute.innerText = cronometro.getMinutes();
-    second.innerText = cronometro.getSeconds();
-    millisecond.innerText = cronometro.getMilliseconds();
-
-    console.log(`${hour.innerText}: ${minute.innerText}: ${second.innerText}: ${millisecond.innerText} \nh  m  s`);
-
-});
-
-btnStart.addEventListener("click", function (e) {
-
-    setInterval(function() { 
-        cronometro.setSeconds((parseInt(second.innerText)) + 1);
-        second.innerText = cronometro.getSeconds();
-        console.log(`${hour}: ${minute}: ${second}: ${millisecond} \nh  m  s`)
-    }, 1000);
-
-    if(start) 
-    {
-        start = false;
-    }
-    else
-    {
-        start = true;    
-    }
-
-});
+function formatMillisecons(time) {
+    return time < 100 ? `${time}`.padStart(3, "0") : time;
+}
