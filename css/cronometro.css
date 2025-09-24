@@ -11,14 +11,51 @@
     font-size: 4em;
 }
 
+.container-cronometro {
+    margin-bottom: 50px;
+    color: #5F5F5F;
+}
+
+.sub-text {
+    font-size: 1.3em;
+}
+
+.container-time {  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .container-btns {
     display: flex;
+    justify-content: center;
+    gap: 20px;
 }
 
 .btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 70px;
+    height: 70px;
+
+    border-radius: 50%;
+
     padding: 10px 20px;
+}
+
+#btnStart {
+    background: #005A9E;
+    border: none;
 }
 
 #btnPause {
     display: none;
+    background: #005A9E;
+    border: none;
+}
+
+#btnMark, #btnReset {
+    background: #fff;
 }

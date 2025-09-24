@@ -12,6 +12,10 @@ main {
     height: 100vh;
 }
 
+body, main {
+    background: #F9F9F9;
+}
+
 aside.sidebar {
 
     display: flex;
@@ -24,7 +28,7 @@ aside.sidebar {
     padding: 3px;
     border-right: 1px solid rgba(0, 0, 0, 0.200);
 
-    background-color: #D9D9D9;
+    background-color: #F3F3F3;
 
 }
 
@@ -34,7 +38,7 @@ aside.sidebar .titulo-relogio {
     padding: 10px;
 }
 
-aside.sidebar img.logo-relogio {
+aside.sidebar img {
     width: 15px;
     height: 15px;
     margin-right: 15px;
@@ -58,7 +62,7 @@ aside.sidebar ul li:hover {
     
     border-radius: 5px;
 
-    background-color: #c1bcbc;
+    background-color: #EAEAEA;
 
     cursor: pointer;
 
@@ -67,4 +71,10 @@ aside.sidebar ul li:hover {
 aside.sidebar a {
     color: black;
     text-decoration: none;
+}
+
+aside.sidebar .main-links a {
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
