@@ -9,6 +9,7 @@ const btnMark = document.querySelector("#btnMark");
 const btnReset = document.querySelector("#btnReset");
 
 let interval;
+let hours = 0;
 let minutes = 0;
 let seconds = 0;
 let milliseconds = 0;
@@ -29,18 +30,27 @@ function startTimer() {
 
         if(!isPaused) {
             
-            milliseconds += 10;
+            milliseconds += 1;
 
-            if(milliseconds === 1000) {
+            // A cada 1000ms (100 pra ficar igual o app) acrescenta 1seg
+            if(milliseconds === 100) {
                 seconds++;
                 milliseconds = 0;
             }
 
+            // A cada 60seg acrescenta 1min
             if(seconds === 60) {
                 minutes++;
                 seconds = 0;
             }
 
+            // A cada 60min acrescenta 1hr
+            if(minutes === 60) {
+                hours++;
+                minutes = 0;
+            }
+
+            hoursEl.textContent = formatTime(hours);
             minutesEl.textContent = formatTime(minutes);
             secondsEl.textContent = formatTime(seconds);
             millisecondsEl.textContent = formatMillisecons(milliseconds);
@@ -62,10 +72,12 @@ function pauseTimer() {
 function resetTimer() {
     clearInterval(interval);
 
+    hours = 0;
     minutes = 0;
     seconds = 0;
     milliseconds = 0;
 
+    hoursEl.textContent = formatTime(hours);
     minutesEl.textContent = formatTime(minutes);
     secondsEl.textContent = formatTime(seconds);
     millisecondsEl.textContent = formatMillisecons(milliseconds);
@@ -81,5 +93,5 @@ function formatTime(time) {
 }
 
 function formatMillisecons(time) {
-    return time < 100 ? `${time}`.padStart(3, "0") : time;
+    return time < 100 ? `${time}`.padStart(2, "0") : time;
 }
